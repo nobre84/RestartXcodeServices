@@ -21,3 +21,8 @@ repeat 3 times
 	end try
 	delay 0.25
 end repeat
+
+try
+	do shell script "/bin/launchctl list | grep SimDevice | awk '{print $3}' | xargs -I %s /bin/launchctl stop %s"
+on error theError
+end try
